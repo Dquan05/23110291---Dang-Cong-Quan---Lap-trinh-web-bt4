@@ -27,7 +27,7 @@ public class RegisterServlet extends HttpServlet {
 		u.setEmail(req.getParameter("email"));
 		u.setFullName(req.getParameter("fullname"));
 		u.setPhone(req.getParameter("phone"));
-		u.setRoleid(1); // hoặc 2, tùy bạn
+		u.setRoleid(1); // hoặc 2
 
 		try {
 			userService.register(u);

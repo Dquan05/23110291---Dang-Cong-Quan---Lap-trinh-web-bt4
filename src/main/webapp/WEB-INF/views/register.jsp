@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,6 +60,12 @@ button:hover {
 	background: #1e7e34;
 }
 
+.alert {
+	color: red;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
 p {
 	text-align: center;
 	margin-top: 15px;
@@ -69,19 +76,32 @@ p {
 <body>
 	<div class="container">
 		<h2>Đăng ký tài khoản</h2>
+
+		<c:if test="${not empty alert}">
+			<div class="alert">
+				<c:out value="${alert}" />
+			</div>
+		</c:if>
+
 		<form method="post"
 			action="${pageContext.request.contextPath}/register">
-			<label>Username</label> <input name="username" required /> <label>Password</label>
+			<label>Username</label> <input type="text" name="username"
+				value="<c:out value='${param.username}'/>" required /> <label>Password</label>
 			<input type="password" name="password" required /> <label>Họ
-				tên</label> <input name="fullname" /> <label>Email</label> <input
-				type="email" name="email" /> <label>Số điện thoại</label> <input
-				name="phone" />
+				tên</label> <input type="text" name="fullname"
+				value="<c:out value='${param.fullname}'/>" /> <label>Email</label>
+			<input type="email" name="email"
+				value="<c:out value='${param.email}'/>" /> <label>Số điện
+				thoại</label> <input type="text" name="phone"
+				value="<c:out value='${param.phone}'/>" />
 
 			<button type="submit">Đăng ký</button>
 		</form>
+
 		<p>
 			Đã có tài khoản? <a href="${pageContext.request.contextPath}/login">Đăng
 				nhập</a>
 		</p>
 	</div>
 </body>
+</html>

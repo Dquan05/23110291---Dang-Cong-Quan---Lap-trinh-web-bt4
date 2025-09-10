@@ -94,7 +94,7 @@ public class CategoryServlet extends HttpServlet {
 			}
 		}
 
-		// sau khi thêm/sửa → quay lại danh sách
+		// sau khi thêm/sửa thì quay lại danh sách
 		resp.sendRedirect(req.getContextPath() + "/category");
 	}
 }

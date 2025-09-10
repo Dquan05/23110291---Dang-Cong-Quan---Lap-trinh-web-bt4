@@ -78,16 +78,19 @@ p {
 		<h2>Đăng nhập</h2>
 
 		<c:if test="${not empty alert}">
-			<div class="alert">${alert}</div>
+			<div class="alert">
+				<c:out value="${alert}" />
+			</div>
 		</c:if>
 
 		<form action="${pageContext.request.contextPath}/login" method="post">
 			<label>Tài khoản</label> <input type="text" name="username"
-				value="${param.username}" placeholder="Nhập tài khoản" required />
+				value="<c:out value='${param.username}'/>"
+				placeholder="Nhập tài khoản" required /> <label>Mật khẩu</label> <input
+				type="password" name="password" placeholder="Nhập mật khẩu" required />
 
-			<label>Mật khẩu</label> <input type="password" name="password"
-				placeholder="Nhập mật khẩu" required /> <label><input
-				type="checkbox" name="remember" /> Ghi nhớ</label>
+			<label> <input type="checkbox" name="remember" /> Ghi nhớ
+			</label>
 
 			<button type="submit">Đăng nhập</button>
 		</form>
