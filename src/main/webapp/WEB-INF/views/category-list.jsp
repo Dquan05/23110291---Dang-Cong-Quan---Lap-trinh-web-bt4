@@ -120,9 +120,10 @@ a.add {
 
 	<div class="content">
 		<div class="top-action">
+			<!-- Sửa action=new -> action=create -->
 			<a class="btn add"
-				href="${pageContext.request.contextPath}/category?action=new">+
-				Thêm danh mục</a>
+				href="${pageContext.request.contextPath}/category?action=create">
+				+ Thêm danh mục </a>
 		</div>
 		<table>
 			<tr>
@@ -131,7 +132,8 @@ a.add {
 				<th>Tên danh mục</th>
 				<th>Hành động</th>
 			</tr>
-			<c:forEach var="c" items="${categories}" varStatus="s">
+			<!-- Đổi categories -> items (khớp với Servlet) -->
+			<c:forEach var="c" items="${items}" varStatus="s">
 				<tr>
 					<td>${s.index + 1}</td>
 					<td><c:if test="${not empty c.image}">

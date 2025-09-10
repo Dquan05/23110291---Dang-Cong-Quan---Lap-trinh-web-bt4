@@ -118,13 +118,22 @@ img {
 		<form method="post"
 			action="${pageContext.request.contextPath}/category"
 			enctype="multipart/form-data">
-			<input type="hidden" name="id" value="${cat.id}" /> <label>Tên
-				danh mục</label> <input type="text" name="name" value="${cat.name}" required />
 
-			<label>Ảnh đại diện</label> <input type="file" name="image" />
-			<c:if test="${not empty cat.image}">
-				<img src="${pageContext.request.contextPath}/uploads/${cat.image}" />
-			</c:if>
+			<input type="hidden" name="id" value="<c:out value='${cat.id}'/>" />
+
+			<label>Tên danh mục</label> <input type="text" name="name"
+				value="<c:out value='${cat.name}'/>" required /> <label>Ảnh
+				đại diện</label> <input type="file" name="image" />
+
+			<c:choose>
+				<c:when test="${not empty cat.image}">
+					<img src="${pageContext.request.contextPath}/uploads/${cat.image}"
+						alt="Ảnh danh mục" />
+				</c:when>
+				<c:otherwise>
+					<p style="color: #888; font-size: 13px;">Chưa có ảnh</p>
+				</c:otherwise>
+			</c:choose>
 
 			<button type="submit">${empty cat ? 'Thêm' : 'Cập nhật'}</button>
 			<a class="cancel" href="${pageContext.request.contextPath}/category">Quay
